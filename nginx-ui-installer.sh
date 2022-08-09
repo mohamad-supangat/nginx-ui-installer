@@ -69,3 +69,7 @@ for FILE in ${FILES[@]}; do
     extract $FILE
 done
 
+
+cp nginx-ui /usr/bin/nginx-ui
+dinitctl restart nginx-ui
+
