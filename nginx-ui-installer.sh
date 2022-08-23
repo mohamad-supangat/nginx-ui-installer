@@ -5,6 +5,7 @@ FILES=(
     'nginx-ui-linux-arm64-v8a.tar.gz'
 )
 
+rmdir frontend
 mkdir frontend
 
 for FILE in ${FILES[@]}; do
@@ -21,6 +22,7 @@ done
 
 tar -zxf frontend-dist.tar.gz -C frontend
 tar -zxf 'nginx-ui-linux-arm64-v8a.tar.gz'
-sudo cp nginx-ui /usr/bin/nginx-ui
-sudo dinitctl restart nginx-ui
+sudo dinitctl stop nginx-ui
+yes | sudo cp -rf nginx-ui /usr/bin/nginx-ui
+sudo dinitctl start nginx-ui
 
