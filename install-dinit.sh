@@ -179,6 +179,10 @@ identify_the_operating_system_and_architecture() {
         elif [[ "$(type -P pacman)" ]]; then
             PACKAGE_MANAGEMENT_INSTALL='pacman -Syu --noconfirm'
             PACKAGE_MANAGEMENT_REMOVE='pacman -Rsn'
+        elif [[ "$(type -P apk)" ]]; then
+            PACKAGE_MANAGEMENT_INSTALL='apk add'
+            PACKAGE_MANAGEMENT_REMOVE='apk del'
+
         else
             echo -e "${FontRed}error: The script does not support the package manager in this operating system.${FontSuffix}"
             exit 1
